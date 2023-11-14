@@ -1,20 +1,23 @@
-import './App.css';
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 
 function App() {
-  const {count,setCount} = useState(0);
+  const [count,setCount] = useState(0);
   return (
-    <div className='App'>
-      <h1>Hello Meng</h1>
+    <>
       <Button count={count} setCount={setCount}/>
-    </div>
-  )
+    </>
+  );
 }
 
-const Button = (props) => {
+function Button(props) {
   console.log("Props: ", props);
-  return <button>Click Me !!!</button>
-  
+  return (
+    <button 
+      onClick={() => {
+      props.setCount(props.count+1);
+   }}> Counter: {props.count} </button>
+  );  
 }
 
-export default App
+export default App;
